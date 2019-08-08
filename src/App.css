@@ -1,0 +1,105 @@
+
+body{
+  font-family: 'Montserrat';
+  font-size: 20px;
+  background-color: #ecf0f1;
+}
+.allData{
+  
+}
+#graph{
+  margin-top: 100px;
+}
+.data{
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  font-size: 0.5em;
+  border-bottom: 1px grey solid;
+  cursor: pointer;
+  text-align: center;
+  margin:10px;
+  
+  }
+#header{
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  font-size: 0.7em;
+background-color:#F7CE3E;
+border:1px black solid; 
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+text-align: center;
+}
+
+input:hover{
+  box-shadow: 0 4px 8px 0 rgba(115, 167, 231, 0.452), 0 6px 20px 0 rgba(115, 167, 231, 0.452);
+  margin: 0;
+
+}
+#inputs{
+  margin-left: 18px;
+  padding-left: 20px
+}
+.inp{
+  font-size: 80%;
+  margin: 0;
+  background-color: #f1f1f1;
+  font-size: 0.7em;
+  border-radius: 4px;
+
+}
+
+#main-links {
+  background-color: #0a1612;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 12fr;
+}
+.main-links {
+  
+  font-size: 15px;
+  padding: 7px;
+  color: grey;  
+  font-weight: bold;
+}
+.main-links:hover{
+background-color: rgb(85, 85, 85);
+}
+.w3-input w3-animate-input{
+  
+  width:135px;
+}
+
+.inpAction{
+  -webkit-appearance: none;
+  width: 20%;
+  height: 5%;
+  border: 0;
+  font-family: inherit;
+  padding: 12px 0;
+  /* height: 48px; */
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 2px solid #C8CCD4;
+  background: none;
+  border-radius: 0;
+  color: #223254;
+  transition: all .15s ease
+
+}
+.button {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  opacity: 0.6;
+  border-radius: 20%;
+}
+
+.button:hover {
+  background-color: rgb(168, 168, 168); 
+  color: white;
+}
+#analitics{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  font-size: 15px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
