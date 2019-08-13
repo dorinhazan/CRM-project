@@ -3,10 +3,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const path = require('path')
-const dataJson = require('../../data.json')
+// const dataJson = require('../../data.json')
 const PORT = 8089
 const mongoose = require('mongoose')
-const moment = require('moment')
 
 
 app.use(express.static(path.join(__dirname, 'node_modules')))
@@ -17,11 +16,9 @@ app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*')
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With')
-
     next()
 })
 
-// app.use('/', bank)
 
 mongoose.connect("mongodb://localhost/crm", { useNewUrlParser: true }).then(() => {
     app.listen(PORT, function (err, res) {
@@ -48,19 +45,7 @@ app.get('/usersData', function (req, res) {
         res.send(response)
     })
 })
-// app.get('/monthclients', function (req, res) {
-//     let dateToCheck =  moment(new Date()).substract(30, 'days').format("YYYY-MM-DD")
 
-// UsersData.find({
-//         "firstContact":
-//         {
-//            "$gte": dateToCheck,
-
-//         }
-//     }).exec(function (reques, response) {
-//         res.send(response)
-//     })
-// })
 
 app.get('/monthclients', function (req, res) {
     let dateToCheck = new Date();
@@ -76,6 +61,52 @@ app.get('/monthclients', function (req, res) {
     })
 })
 
+
+app.get('/yearclients', function (req, res) {
+    let dateToCh = new Date();
+    dateToCh.setDate(dateToCh.getDate() - 365)
+
+    UsersData.find({
+        'firstContact':
+        {
+            "$gte": dateToCh,
+        }
+    }).exec(function (err, clients) {
+        res.send(clients)
+    })
+})
+
+
+
+app.get('/monthclientssixmonth', function (req, res) {
+    let dateTo = new Date();
+    dateTo.setDate(dateTo.getDate() - 180)
+
+    UsersData.find({
+        'firstContact':
+        {
+            "$gte": dateTo,
+        }
+    }).exec(function (err, clients) {
+        res.send(clients)
+    })
+})
+
+app.get('/monthclientstwelvemonth', function (req, res) {
+    let dateToC = new Date();
+    dateToC.setDate(dateToC.getDate())
+
+    UsersData.find({
+        'firstContact':
+            "$and"[{
+                "$gte": dateToC.setDate(dateToC.getDate() - 360),
+            },
+            { "$lte": dateToC.setDate(dateToC.getDate()) - 180 }
+        ]
+    }).exec(function (err, clients) {
+        res.send(clients)
+    })
+})
 
 app.post('/userdata', function (req, res) {
     let data = req.body
@@ -101,7 +132,7 @@ app.put('/owner', function (req, res) {
 
 app.put('/email', function (req, res) {
     let data = req.body
-    UsersData.findOneAndUpdate({ name: data.name }, { emailType: data.emailType }, {
+    UsersData.find({ name: data.name }, { emailType: data.emailType }, {
         new: true
     }, function (err, expense) {
         res.send(expense)
@@ -120,9 +151,7 @@ app.put('/sold', function (req, res) {
 
 app.put('/popup', function (req, res) {
     let data = req.body
-    console.log(data);
-
-    UsersData.findOneAndUpdate({ name: data.firstName + " " + data.surname }, { country: data.country }, {
+    UsersData.findOneAndUpdate({ name: data.name }, { name: data.firstName + " " + data.surname, country: data.country }, {
         new: true
     }, function (err, expense) {
         res.send(expense)

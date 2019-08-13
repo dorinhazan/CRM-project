@@ -29,7 +29,7 @@ class HottestCountry extends Component {
 
     render() {
         return (<div>
-            <img src="https://i.gyazo.com/3f3dc80bd7bf041290c42a3a1c8d2c5c.png" width="40"></img> <span>{this.hottestCountry()}</span><span> Hottest Country</span>
+            <img src="https://i.gyazo.com/3f3dc80bd7bf041290c42a3a1c8d2c5c.png" width="60"></img> <span>{this.hottestCountry()}</span><span id="hottest"> Hottest Country</span>
         </div>
         )
     }

@@ -17,7 +17,7 @@ class EmailSent extends Component {
     }
     render() {
         return (<div>
-            <img src="https://i.gyazo.com/66892e40a848c3cdb9a2ac4730c82998.png" width="40"></img> <span>{this.emailSent()}</span> <span> Email Sent</span>  
+            <img src="https://i.gyazo.com/66892e40a848c3cdb9a2ac4730c82998.png" width="60"></img> <span>{this.emailSent()}</span> <span id="email"> Email Sent</span>  
         </div>
         )
     }

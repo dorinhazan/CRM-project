@@ -19,7 +19,7 @@ class OutStandingClients extends Component {
     
     render() {
         return (<div>
-            <img src="https://i.gyazo.com/67fa879532734959b2be3904a57cc393.png" width="40"></img> <span>{this.outStandingClients()}</span><span> Outstanding Clients</span>
+            <img src="https://i.gyazo.com/67fa879532734959b2be3904a57cc393.png" width="60"></img> <span>{this.outStandingClients()}</span><span id="outStanding"> Outstanding Clients</span>
         </div>
         )
     }

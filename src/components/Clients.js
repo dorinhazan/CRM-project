@@ -14,9 +14,7 @@ class Clients extends Component {
     changeInput = (event) => {
         const target = event.target
         const value = target.type === 'checkbox' ? target.checked : target.value;
-        this.setState({
-            input: value
-        })
+        this.setState({input: value})
     }
 
     changeOption = (event) => {
@@ -25,12 +23,24 @@ class Clients extends Component {
         this.setState({ option: value })
     }
 
+    PopUp = (event) => {
+        this.props.PopUp(event)
+    }
 
     render() {
         let option = this.state.option
         let data = this.props.data.filter(item => {
-            if (typeof item[option] !== 'undefined') {
-                return item[option].includes(this.state.input)
+            if (typeof item[option] !== "undefined") {
+                if(option !== 'sold'){
+                    return item[option].includes(this.state.input)
+                }
+                else{
+                    if (typeof item[option] !== "undefined") {
+                        if( item[option]==="true"){
+                            return item.name.includes(this.state.input)
+                        }
+                    }
+                }
             }
         })
 
@@ -49,7 +59,7 @@ class Clients extends Component {
                 <div id="header"><span>name</span><span>surnName</span><span>Country</span><span>First Contact</span> <span>Email</span> <span>Sold</span><span> Owner</span></div>
                 <div id="all">
                     {data.map(m =>
-                        <ClientRow popUp={this.props.popUp} m={m} />
+                        <ClientRow  PopUp={this.PopUp} m={m} />
                     )}
                 </div>
             </div>

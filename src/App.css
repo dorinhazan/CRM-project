@@ -1,14 +1,50 @@
 
 body{
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   background-color: #ecf0f1;
 }
-.allData{
-  
+
+#hottest{
+  font-size:10px;
+}
+#outStanding{
+  font-size:10px;
+
+}
+#email{
+  font-size:10px;
+
+}
+#clients{
+  font-size:10px;
+
+}
+h4{
+  margin-top: 0px;
 }
 #graph{
-  margin-top: 100px;
+  /* display: grid;
+  grid-template-columns: repeat(2,8fr);
+grid-template-rows: repeat(1,4fr); */
+
+  
+  font-size: 10px;  
+}
+
+#Action{
+
+  margin-top: 10px;
+ margin-left: 20px;
+}
+#green{
+ color: rgb(95, 175, 95);
+}
+#blue{
+ color: rgb(98, 131, 202);
+}
+#yellow{
+ color: rgb(224, 213, 109);
 }
 .data{
   display: grid;
@@ -18,14 +54,20 @@ body{
   cursor: pointer;
   text-align: center;
   margin:10px;
-  
   }
+
+  #popup{
+    text-align: center;
+  }
+
 #header{
   display: grid;
   grid-template-columns: repeat(7,1fr);
   font-size: 0.7em;
-background-color:#F7CE3E;
-border:1px black solid; 
+background-color: #F4E8C1;
+color: grey;  
+
+border:1px grey solid; 
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 text-align: center;
 }
@@ -48,20 +90,28 @@ input:hover{
 
 }
 
+/* .top{
+  display: grid;
+  grid-area: f;  
+} */
+.s{
+ margin-left: 15px;
+}
 #main-links {
-  background-color: #0a1612;
+  width:100%;
+  background-color: #A0C1B8;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 12fr;
+
 }
-.main-links {
-  
+.main-links {  
   font-size: 15px;
   padding: 7px;
   color: grey;  
   font-weight: bold;
 }
 .main-links:hover{
-background-color: rgb(85, 85, 85);
+background-color: rgb(90, 187, 161);
 }
 .w3-input w3-animate-input{
   
@@ -75,8 +125,7 @@ background-color: rgb(85, 85, 85);
   border: 0;
   font-family: inherit;
   padding: 12px 0;
-  /* height: 48px; */
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 500;
   border-bottom: 2px solid #C8CCD4;
   background: none;

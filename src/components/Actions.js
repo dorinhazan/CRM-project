@@ -46,7 +46,7 @@ class Actions extends Component {
         let data = this.props.data
 
         return (
-            <div>
+            <div id="Action">
                 <div>
                     <h4>Update User</h4>
                     <input className="inpAction" list="clients" placeholder="Client" value={data.name} onChange={this.changeFirstNAme}></input><br></br>

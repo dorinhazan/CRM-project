@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, } from 'recharts';
 
 class TopEmploee extends PureComponent {
   constructor() {
@@ -10,17 +10,17 @@ class TopEmploee extends PureComponent {
   }
   static jsfiddleUrl = 'https://jsfiddle.net/alidingling/30763kr7/';
 
-  emploee = async () => {
+  emploee = () => {
     let owners = {}
     const data = this.props.data
-    data.map(c => { owners[c.owner] = 1 })
-    data.map(m => {
-      if (m.sold != false) {
-        owners[m.owner]++
-      }
+    data.filter(d => d.sold).forEach(c => {
+      owners[c.owner] ?
+        owners[c.owner]++ :
+        owners[c.owner] = 1
     })
+    let array = []
     let keysSorted = Object.keys(owners).sort(function (a, b) { return owners[b] - owners[a] })
-    this.state.data.push(
+    array.push(
       {
         name: keysSorted[0],
         sales: owners[keysSorted[0]],
@@ -34,28 +34,29 @@ class TopEmploee extends PureComponent {
         sales: owners[keysSorted[2]],
       },
     )
-    console.log(this.state.data);
+
+    return array
 
   }
 
 
   render() {
-    this.emploee()
+    let data = this.emploee()
     return (
       <BarChart
         width={500}
-        height={180}
-        data={this.state.data}
+        height={150}
+        data={data}
         margin={{
-          top: 5, right: 30, left: 20, bottom: 5,
+          top: 5, right: 30, left: -20, bottom: 5,
         }}
       >
-        <CartesianGrid strokeDasharray="3 3" />
+        <CartesianGrid strokeDasharray="5 5" />
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="sales" fill="#8884d8" />
+        <Bar dataKey="sales" fill="#709FB0"  />
       </BarChart>
     );
   }

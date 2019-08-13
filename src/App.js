@@ -12,8 +12,7 @@ class App extends Component {
     super()
     this.state = {
       data: []
-    }
-  }
+    }}
 
   async getData() {
     return await axios.get("http://localhost:8089/usersData")
@@ -21,7 +20,6 @@ class App extends Component {
 
   async componentDidMount() {
     const response = await this.getData()
-
     this.setState({ data: response.data }, function () {
 
     })
@@ -72,17 +70,13 @@ class App extends Component {
       )
   }
 
-  popUp = async (event) => {
-    console.log(event);
-    
+  PopUp = async (event) => {    
     await axios.put('http://localhost:8089/popup', event)
       .then(response => {
         console.log(response)
-        
-      })
+         })
       .catch(err => console.log(err)
       )
-      console.log(event.firstName + " " + event.surname)
 
   }
   render() {
@@ -94,7 +88,7 @@ class App extends Component {
           <Link className="main-links" to="/analytics">analytics</Link>
         </div>
           <Route path="/" render={() => (<Redirect to="/clients" />)} />
-          <Route path="/clients" exact render={() => <Clients changeData={this.changeData} popUp={this.popUp} data={this.state.data} />} />
+          <Route path="/clients" exact render={() => <Clients changeData={this.changeData} PopUp={this.PopUp} data={this.state.data} />} />
           <Route path="/actions" exact render={() => <Actions data={this.state.data} transferSold={this.transferSold} transferEmail={this.transferEmail} transferOwner={this.transferOwner} upsetUser={this.updetUser} addClient={this.addClient} />} />
           <Route path="/analytics" exact render={() => <Analytics data={this.state.data} />} />
         </div>

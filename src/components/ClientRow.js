@@ -15,6 +15,9 @@ setRow = () => {
     })
 
 }
+PopUp = (event) => {
+    this.props.PopUp(event)
+}
     render() {
         let m = this.props.m
         return (<div>
@@ -27,7 +30,7 @@ setRow = () => {
                 <span>{m.sold === "true" ? <img src="https://png.pngtree.com/svg/20161202/da573c8d9d.svg" width="10"></img> : "X"}</span>
                 <span>{!m.owner ? null : m.owner}</span>
             </div>
-                {this.state.display ? <PopUp data={m} popUp={this.props.popUp} closePopUp={this.setRow} popUp={this.props.popUp}/> : null}
+                {this.state.display ? <PopUp data={m} PopUp={this.PopUp} closePopUp={this.setRow} popUp={this.props.popUp}/> : null}
                 </div>
             )
     }

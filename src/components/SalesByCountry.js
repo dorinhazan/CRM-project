@@ -11,46 +11,36 @@ class SalesByCountry extends PureComponent {
     }
     static jsfiddleUrl = 'https://jsfiddle.net/alidingling/30763kr7/';
 
-    emploee = async () => {
+    countrySales = () => {
         let countries = {}
         const data = this.props.data
-        data.map(c => { countries[c.country] = 1 })
-        data.map(m => {
-            if (m.sold != false) {
-                countries[m.country]++
-            }
-            
+        data.filter(d => d.sold).forEach(c => {
+            countries[c.country] ?
+                countries[c.country]++ :
+                countries[c.country] = 1
+        })
+        let array = []
+        for (let i in countries) {
+            array.push(
+                {
+                    name: i,
+                    sales: countries[i],
+                },
+            )
         }
-        )
-        // let arr = []
-        // for (let i in countries) {
-        //     const country = {
-        //         name: i,
-        //         sales: countries[i]
-        //     }
-        //     arr.push(country)
-        // }
-        // this.setState({
-        //     countries: arr
-        // },function(){
-
-        // })
-        
-
-
-
+        return array
     }
 
 
     render() {
-        this.emploee()
+       let data= this.countrySales()
         return (
             <BarChart
                 width={500}
-                height={180}
-                data={this.state.data}
+                height={150}
+                data={data}
                 margin={{
-                    top: 5, right: 30, left: 20, bottom: 5,
+                    top: 5, right: -20, left: -20, bottom: -10,
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" />
@@ -58,7 +48,7 @@ class SalesByCountry extends PureComponent {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="sales" fill="#8884d8" />
+                <Bar dataKey="sales" fill="#709FB0" />
             </BarChart>
         );
     }
